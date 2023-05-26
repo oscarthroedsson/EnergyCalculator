@@ -2,6 +2,10 @@ body {
   height: 100vh;
   margin: 0px;
   background-color: #5ba1db;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .radioInput {
@@ -10,4 +14,87 @@ body {
 
 .headlineInput {
   display: flex;
+}
+
+.calculatorContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+/*---------- STYLE RESULTCONTAINER ----------*/
+
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  max-width: 100%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 0px 10px 10px 0px;
+}
+.resultContainer h3 {
+  width: 100%;
+  padding-block: 5px;
+  border-bottom: 2px solid darkblue;
+}
+
+.presentEnergyResult,
+.categorysEnergyResult {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+}
+
+.bmiResult {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.bmiResult p {
+  margin: 0px;
+}
+.bmiNumber {
+  font-size: 60px;
+}
+
+.infoTextResult {
+  margin: auto;
+  max-width: 400px;
+}
+
+/*---------- STYLE GRAPH ----------*/
+.resultaGraphLine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.marker {
+  position: absolute;
+  height: 20px;
+  width: 3px;
+  background-color: black;
+  border-radius: 100px;
+  z-index: 1;
+}
+#bmi-line {
+  width: 500px;
+  height: 5px;
+  background-image: linear-gradient(
+    to right,
+    #4287f5,
+    #4287f5 33%,
+    #00cc00 33%,
+    #00cc00 66%,
+    #ff0000 66%,
+    #ff0000 100%
+  );
+  border-radius: 10px;
+  position: relative;
 }

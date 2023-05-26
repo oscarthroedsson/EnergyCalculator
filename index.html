@@ -28,7 +28,7 @@
         <input type="range" name="" id="" min="0" max="200" />
 
         <div class="headlineInput">
-          <p>AGE</p>
+          <h5>HEIGHT</h5>
           <p>SHOW</p>
         </div>
         <input type="range" name="" id="" min="16" max="100" />
@@ -41,8 +41,52 @@
             ><input type="radio" name="gender" id="felmale"
           /></label>
         </div>
+        <button>GENERATE RESULT</button>
       </div>
-      <div class="resultContainer"></div>
+      <div class="resultContainer">
+        <h3>YOUR RESULTS</h3>
+        <div class="wrapperPresentEnergy">
+          <div class="presentEnergyResult">
+            <p id="carbs">1000 kcal</p>
+            <p id="protein">1000 kcal</p>
+            <p id="fat">1000 kcal</p>
+            <p id="energyNeed">1000 kcal</p>
+          </div>
+          <div class="categorysEnergyResult">
+            <p>Carbohydrates</p>
+            <p>Protein</p>
+            <p>Fat</p>
+            <p>kcal/day</p>
+          </div>
+        </div>
+
+        <div class="contentResultWrapper">
+          <div class="bmiResult">
+            <p class="bmiNumber">27</p>
+            <div class="bmicontainer">
+              <p>BMI</p>
+              <div class="bmiFactorText">obese</div>
+            </div>
+          </div>
+          <div class="resultaGraphLine">
+            <div class="marker"></div>
+            <div id="bmi-line" aria-valuemin="16" aria-valuemax="40"></div>
+          </div>
+        </div>
+        <p class="infoTextResult">
+          Improving your health can feel overwhelming, but remember that every
+          small step you take towards a healthier lifestyle is progress. Don't
+          be discouraged by setbacks, but instead focus on the positive changes
+          you are making. You are capable of achieving your goals and taking
+          control of your health. Keep in mind that a healthy lifestyle is not a
+          quick fix, but a lifelong journey. Celebrate your successes, no matter
+          how small, and know that each healthy choice you make brings you
+          closer to your goals. With dedication and perseverance, you can
+          achieve a healthier and happier you.
+        </p>
+      </div>
     </section>
+
+    <script src="index.js"></script>
   </body>
 </html>
