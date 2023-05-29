@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styleMediaQ.css" />
     <title>Document</title>
   </head>
   <body>
@@ -12,8 +13,12 @@
       <div class="calculatorInput">
         <h4>SYSTEM</h4>
         <div class="radioInput">
-          <label for=""><input type="radio" name="" id="" />METRIC</label>
-          <label for=""><input type="radio" name="" id="" />IMPERIAL</label>
+          <label for="measureSystem"
+            ><input type="radio" name="measureSystem" id="" />METRIC</label
+          >
+          <label for="measureSystem"
+            ><input type="radio" name="measureSystem" id="" />IMPERIAL</label
+          >
         </div>
         <div class="headlineInput">
           <h5>WEIGHT</h5>
@@ -28,62 +33,75 @@
         <input type="range" name="" id="" min="0" max="200" />
 
         <div class="headlineInput">
-          <h5>HEIGHT</h5>
+          <h5>AGE</h5>
           <p>SHOW</p>
         </div>
         <input type="range" name="" id="" min="16" max="100" />
         <h5>GENDER</h5>
         <div class="radioInput">
           <label for="gender"
-            ><input type="radio" name="gender" id="male"
-          /></label>
+            ><input type="radio" name="gender" id="male" />MALE</label
+          >
           <label for="gender"
-            ><input type="radio" name="gender" id="felmale"
-          /></label>
+            ><input type="radio" name="gender" id="felmale" />FEMALE</label
+          >
         </div>
+
+        <h5>GOAL</h5>
+        <div class="inputGoal">
+          <label for=""><input type="radio" name="" id="" />Loose</label>
+          <label for=""><input type="radio" name="" id="" />Gain</label>
+          <label for=""><input type="radio" name="" id="" />Maintain</label>
+        </div>
+
         <button>GENERATE RESULT</button>
       </div>
       <div class="resultContainer">
         <h3>YOUR RESULTS</h3>
-        <div class="wrapperPresentEnergy">
-          <div class="presentEnergyResult">
-            <p id="carbs">1000 kcal</p>
-            <p id="protein">1000 kcal</p>
-            <p id="fat">1000 kcal</p>
-            <p id="energyNeed">1000 kcal</p>
-          </div>
-          <div class="categorysEnergyResult">
-            <p>Carbohydrates</p>
-            <p>Protein</p>
-            <p>Fat</p>
-            <p>kcal/day</p>
-          </div>
-        </div>
-
-        <div class="contentResultWrapper">
-          <div class="bmiResult">
-            <p class="bmiNumber">27</p>
-            <div class="bmicontainer">
-              <p>BMI</p>
-              <div class="bmiFactorText">obese</div>
+        <div class="wrapperResultInfo">
+          <div class="wrapperPresentEnergy">
+            <div class="presentEnergyResult">
+              <p id="carbs">1000 kcal</p>
+              <p id="protein">1000 kcal</p>
+              <p id="fat">1000 kcal</p>
+              <p id="energyNeed">1000 kcal</p>
+            </div>
+            <div class="categorysEnergyResult">
+              <p>Carbohydrates</p>
+              <p>Protein</p>
+              <p>Fat</p>
+              <p>kcal/day</p>
             </div>
           </div>
-          <div class="resultaGraphLine">
-            <div class="marker"></div>
-            <div id="bmi-line" aria-valuemin="16" aria-valuemax="40"></div>
+
+          <div class="contentResultWrapper">
+            <div class="bmiResult">
+              <p class="bmiNumber">27</p>
+              <div class="bmicontainer">
+                <p>BMI</p>
+                <div class="bmiFactorText">obese</div>
+              </div>
+            </div>
+            <div class="resultaGraphLine">
+              <div class="marker"></div>
+              <div id="bmi-line" aria-valuemin="16" aria-valuemax="40"></div>
+            </div>
+          </div>
+          <div class="infoTextResultContainer">
+            <p>
+              Improving your health can feel overwhelming, but remember that
+              every small step you take towards a healthier lifestyle is
+              progress. Don't be discouraged by setbacks, but instead focus on
+              the positive changes you are making. You are capable of achieving
+              your goals and taking control of your health. Keep in mind that a
+              healthy lifestyle is not a quick fix, but a lifelong journey.
+              Celebrate your successes, no matter how small, and know that each
+              healthy choice you make brings you closer to your goals. With
+              dedication and perseverance, you can achieve a healthier and
+              happier you.
+            </p>
           </div>
         </div>
-        <p class="infoTextResult">
-          Improving your health can feel overwhelming, but remember that every
-          small step you take towards a healthier lifestyle is progress. Don't
-          be discouraged by setbacks, but instead focus on the positive changes
-          you are making. You are capable of achieving your goals and taking
-          control of your health. Keep in mind that a healthy lifestyle is not a
-          quick fix, but a lifelong journey. Celebrate your successes, no matter
-          how small, and know that each healthy choice you make brings you
-          closer to your goals. With dedication and perseverance, you can
-          achieve a healthier and happier you.
-        </p>
       </div>
     </section>
 

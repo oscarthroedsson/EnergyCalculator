@@ -1,0 +1,16 @@
+@media screen and (max-width: 1000px) {
+  .calculatorContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* --------- INPUTFIELD ----------*/
+  .calculatorInput {
+    width: 80%;
+  }
+
+  /* --------- RESULT CONTAINER ---------*/
+  .resultContainer {
+    width: 80%;
+  }
+}
