@@ -1,7 +1,7 @@
 @media screen and (max-width: 1000px) {
   .calculatorContainer {
     flex-direction: column;
-    width: 100%;
+    justify-content: center;
   }
 
   /* --------- INPUTFIELD ----------*/
@@ -12,5 +12,17 @@
   /* --------- RESULT CONTAINER ---------*/
   .resultContainer {
     width: 80%;
+  }
+
+  span {
+    width: 90%;
+    text-align: center;
+    padding-inline: 20px;
+  }
+}
+
+@media (min-width: 300px) {
+  .background-img {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, calc(23% - 10px) 99%);
   }
 }
