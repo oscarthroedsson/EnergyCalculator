@@ -58,6 +58,10 @@
     justify-content: center;
   }
 
+  .calculatorContainer table td {
+    font-size: 13px;
+  }
+
   .intro {
     max-width: 80%;
     text-align: center;

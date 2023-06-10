@@ -148,6 +148,13 @@ p {
 
   flex-wrap: wrap;
 }
+.calculatorContainer table tr:last-child {
+  border-bottom: none;
+}
+
+.rowBmi {
+  border: none;
+}
 
 .calculatorContainer option {
   overflow-wrap: break-word;
