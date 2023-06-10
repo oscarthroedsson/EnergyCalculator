@@ -220,7 +220,7 @@ function calculateBmi() {
       bmiMsg.textContent = "Severe Obesity";
     } else if (bmi > 35 && bmi <= 40) {
       bmiMsg.textContent = "Morbid obesity";
-    } else if (bmi > 50) {
+    } else if (bmi > 40) {
       bmiMsg.textContent = "Extreme obesity";
     }
   }
