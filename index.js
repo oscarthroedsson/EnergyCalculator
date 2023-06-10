@@ -276,6 +276,7 @@ const macroFatEl = document.getElementById("fatMacro");
 
 //collect all % options
 let percentOption = document.querySelectorAll('select[name="percentChoice"]');
+//run functions when percent value changed
 percentOption.forEach((e) => {
   e.addEventListener("change", () => {
     validatePercentChoice();
@@ -326,18 +327,21 @@ function populateMacroDropdowns() {
 }
 
 function presentCaloriesMacros() {
-  calCarb = energyIntake * (parseInt(percentCarbsEl.value) / 100).toFixed(1);
-  caloriesCarbEl.textContent = calCarb + " kcal";
-  calProt = energyIntake * (parseInt(percentProteinEl.value) / 100).toFixed(1);
-  caloriesProteinEl.textContent = calProt + " kcal";
-  calFat = energyIntake * (parseInt(percentFatEl.value) / 100).toFixed(1);
-  caloriesFatEl.textContent = calFat + " kcal";
+  calCarb = energyIntake * parseFloat(percentCarbsEl.value / 100);
+  caloriesCarbEl.textContent = calCarb.toFixed(1) + " kcal";
+
+  calProt = energyIntake * parseFloat(percentProteinEl.value / 100);
+  caloriesProteinEl.textContent = calProt.toFixed(1) + " kcal";
+
+  calFat = energyIntake * parseFloat(percentFatEl.value / 100);
+  caloriesFatEl.textContent = calFat.toFixed(1) + " kcal";
 }
 
+//fixing the macros
 function presentMacros() {
-  macroCarbEl.textContent = (calCarb / 4).toFixed(1) + " g";
-  macroProteinEl.textContent = (calProt / 4).toFixed(1) + " g";
-  macroFatEl.textContent = (calFat / 9).toFixed(1) + " g";
+  macroCarbEl.textContent = Math.round(calCarb / 4) + " g";
+  macroProteinEl.textContent = Math.round(calProt / 4) + " g";
+  macroFatEl.textContent = Math.round(calFat / 9) + " g";
 }
 
 //validate that all % values is 100% or red text
