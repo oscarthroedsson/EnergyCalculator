@@ -1,18 +1,82 @@
 @media screen and (max-width: 1000px) {
+  body {
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  header {
+    align-self: flex-end;
+  }
+
+  .mobileNav {
+    display: none;
+    flex-direction: column;
+    width: 50vw;
+    height: 100vh;
+    align-items: flex-end;
+
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    background-color: white;
+    padding: 10px 20px;
+  }
+  .mobileNavBtn {
+    display: block;
+    margin: 15px 15px;
+    padding: 10 px 30px;
+  }
+  .mobileNav ul {
+    display: block;
+    text-align: end;
+    padding: 0px;
+    margin-top: 20px;
+  }
+  .mobileNav li {
+    margin-block: 15px;
+  }
+
+  .mobileNav p {
+    font-weight: 200;
+
+    justify-content: flex-end;
+    padding: 5px 5px;
+  }
+
+  .contentHeader {
+    flex-direction: column;
+    gap: 50px;
+    margin: 20px;
+    padding: 0px;
+    height: auto;
+  }
+
   .calculatorContainer {
     flex-direction: column;
     justify-content: center;
+  }
+
+  .intro {
+    max-width: 80%;
+    text-align: center;
   }
 
   /* --------- INPUTFIELD ----------*/
   .calculatorInput {
     width: 80%;
   }
+  /*DON´T TOUCH- FIXING WIDTH OF INPUT-FIELD*/
+  .activityElement {
+    box-sizing: border-box;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 280px;
+    min-width: 140px;
+  }
 
   /* --------- RESULT CONTAINER ---------*/
-  .resultContainer {
-    width: 80%;
-  }
 
   span {
     width: 90%;

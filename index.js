@@ -8,13 +8,13 @@ const femaleEl = document.getElementById("supplementaryFemaleInfo");
 const activityEl = document.getElementById("activityElement");
 const goalEl = document.getElementById("goalElement");
 const infoFemale = document.getElementById("msgFemale");
+const infoFemaleSelect = document.getElementById("msgFemaleSelect");
 const infoHeight = document.getElementById("msgHeight");
 const infoAge = document.getElementById("msgAge");
 
 //array for measurment
-const metricValue = [" cm", " kg", " years"];
-const imperialValue = [" inches", " lbs", "years"];
-const imgBackgroundResult = [];
+const metricValue = [" :cm", " :kg", " :years"];
+const imperialValue = [" :in.", " :lbs", " :years"];
 let measureChoice = "";
 let gender = "";
 let pregnentInfo = "";
@@ -51,9 +51,11 @@ measureChoiceSelect.addEventListener("change", function () {
 genderEl.addEventListener("change", function () {
   gender = genderEl.value;
   if (gender === "female") {
-    infoFemale.style.display = "flex";
+    infoFemale.style.display = "block";
+    infoFemaleSelect.style.display = "block";
   } else {
     infoFemale.style.display = "none";
+    infoFemaleSelect.style.display = "none";
   }
   console.log(gender);
 });
@@ -69,7 +71,7 @@ heightEl.addEventListener("change", function () {
   console.log("height ", height);
   if (height >= 273) {
     console.log("hje");
-    infoHeight.style.display = "flex";
+    infoHeight.style.display = "block";
   } else {
     infoHeight.style.display = "none";
   }
@@ -99,13 +101,15 @@ activityEl.addEventListener("change", function () {
 });
 
 const weightChoice = document.getElementById("msgWeightGoal");
+const weightChoiceSelect = document.getElementById("msgWeightGoalSelect");
 const weightGoal1 = document.getElementById("goalValue1");
 const weightGoal2 = document.getElementById("goalValue2");
 const weightValueEl = document.getElementById("specificWeightGoalInfo");
 
 // get goal of user n display weight goal factors
 goalEl.addEventListener("change", function () {
-  weightChoice.style.display = "flex";
+  weightChoice.style.display = "block";
+  weightChoice.style.display = "block";
   weightGoal = goalEl.value;
   console.log("goal: ", weightGoal);
   setWeightGoalValues();
@@ -120,12 +124,15 @@ goalEl.addEventListener("change", function () {
 function setWeightGoalValues() {
   if (measureChoice === "metric") {
     if (weightGoal === "weightgain") {
+      weightChoice.style.display = "block";
+      weightChoiceSelect.style.display = "block";
       weightGoal1.textContent = "+0.5 kg/week";
       weightGoal1.value = 500;
       weightGoal2.textContent = "+1 kg/week";
       weightGoal2.value = 1000;
     } else if (weightGoal === "weightloss") {
-      weightChoice.style.display = "flex";
+      weightChoice.style.display = "block";
+      weightChoiceSelect.style.display = "block";
       weightGoal1.textContent = "-0.5 kg/week";
       weightGoal1.value = -500;
       weightGoal2.textContent = "-1 kg/week";
@@ -138,7 +145,8 @@ function setWeightGoalValues() {
       weightGoal2.textContent = "+2 lbs/week";
       weightGoal2.value = 1000;
     } else if (weightGoal === "weightloss") {
-      weightChoice.style.display = "flex";
+      weightChoice.style.display = "block";
+      weightChoiceSelect.style.display = "block";
       weightGoal1.textContent = "-1 lbs/week";
       weightGoal1.value = -500;
       weightGoal2.textContent = "-2 lbs/week";
@@ -157,15 +165,27 @@ physicalLevel.forEach((e) => {
 });
 
 //Getting elements for presenting cal and macros
+const resultContainerEl = document.getElementById("resultContainer");
+const tableEl = document.getElementById("table-El");
 const presentCarbs = document.getElementById("carbs");
 const presentProtein = document.getElementById("protein");
 const presentFat = document.getElementById("fat");
 const presentEnergy = document.getElementById("energyNeed");
+const imgResult = document.getElementById("background-img");
+
+const calacBtn = document.getElementById("calcBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+function showResult() {
+  resultContainerEl.style.display = "block";
+  tableEl.style.display = "none";
+  calacBtn.style.display = "none";
+  resetBtn.style.display = "block";
+}
 
 function calculateBmi() {
-  const bmiElement = document.getElementById("bmiNumber");
-  const bmiMsg = document.getElementById("bmiFactorText");
-  const imgResult = document.getElementById("background-img");
+  const bmiElement = document.getElementById("bmiValue");
+  const bmiMsg = document.getElementById("bmiMsg");
 
   bmi = (weight / Math.pow(height / 100, 2)).toFixed(1);
   bmiElement.textContent = bmi;
@@ -173,41 +193,37 @@ function calculateBmi() {
   if (bmi < 18.5) {
     bmiElement.style.color = "#13adcc";
   }
-
   if (bmi < 18.5) {
     bmiMsg.textContent = "Underweight";
+    bmiMsg.style.background =
+      "linear-gradient(255deg, rgba(19,173,204,1) 0%, rgba(19,173,204,1) 100%)";
     bmiElement.style.color = "#13adcc";
-    bmiMsg.style.color = "#13adcc";
     imgResult.src = "underweight-background.svg";
   } else if (bmi >= 18.5 && bmi <= 25) {
     bmiMsg.textContent = "Normal";
     bmiElement.style.color = "#15d676";
-    bmiMsg.style.color = "#15d676";
+    bmiMsg.style.background =
+      "linear-gradient(255deg, rgba(21,214,118,1) 0%, rgba(21,214,118,1) 100%)";
     imgResult.src = "normalweight-background.svg";
   } else if (bmi >= 25 && bmi <= 30) {
     bmiMsg.textContent = "Overweight";
     bmiElement.style.color = "#ff8a14";
-    bmiMsg.style.color = "#ff8a14";
+    bmiMsg.style.background =
+      "linear-gradient(255deg, rgba(255,138,20,1) 0%, rgba(255,138,20,0) 100%)";
     imgResult.src = "overweight-background.svg";
   } else {
+    bmiMsg.style.background =
+      "linear-gradient(255deg, rgba(238,88,88,1) 0%, rgba(238,88,88,0) 100%)";
     bmiElement.style.color = "#ee5858";
-    bmiMsg.style.color = "#ee5858";
     imgResult.src = "obesity-background.svg";
     if (bmi >= 30 && bmi <= 35) {
-      bmiMsg.textContent += "Severe Obesity";
+      bmiMsg.textContent = "Severe Obesity";
     } else if (bmi > 35 && bmi <= 40) {
-      bmiMsg.textContent += "Morbid obesity";
+      bmiMsg.textContent = "Morbid obesity";
     } else if (bmi > 50) {
-      bmiMsg.textContent += "Extreme obesity";
+      bmiMsg.textContent = "Extreme obesity";
     }
   }
-
-  const markerPosition = ((bmi - 16) / (40 - 16)) * 100;
-  // Get the marker element
-  const markerElement = document.querySelector(".marker");
-  // Set the left position of the marker
-  markerElement.style.left = `${markerPosition}%`;
-  console.log("bmi ", bmi), "class: ", bmiMsg.textContent;
 }
 
 function calculateEnergy() {
@@ -215,18 +231,188 @@ function calculateEnergy() {
     if (gender === "female") {
       bmr = 655.0955 + (9.5634 + weight) + 1.8496 * height - (4.6756 - age);
       energyIntake = parseInt(bmr * activityLevel + weightGoalValue);
+      presentEnergy.textContent = energyIntake;
       console.log("kvinna", energyIntake);
     } else {
       bmr = 66.5 + 13.7516 * weight + 5.0033 * height - (6.755 - age);
       console.log(bmr);
       energyIntake = parseInt(bmr * activityLevel + weightGoalValue);
+      presentEnergy.textContent = energyIntake;
       console.log("weightgoalvalue: ", weightGoalValue);
       console.log("Man: ", energyIntake);
     }
   }
 }
+
+resetBtn.addEventListener("click", () => {
+  calacBtn.style.display = "block";
+  resetBtn.style.display = "none";
+});
+
 //functions run when user press "genereate result"
-function btnClicked() {
+function calcBtn() {
   calculateBmi();
   calculateEnergy();
+  showResult();
+  populateMacroDropdowns();
+  validatePercentChoice();
+  presentCaloriesMacros();
+  presentMacros();
 }
+
+const caloriesCarbEl = document.getElementById("carbCalories");
+const percentCarbsEl = document.getElementById("percentCarbs");
+const macroCarbEl = document.getElementById("carbMacro");
+
+//Getting proteinElements
+const caloriesProteinEl = document.getElementById("proteinCalories");
+const percentProteinEl = document.getElementById("percentProtein");
+const macroProteinEl = document.getElementById("proteinMacro");
+
+//getting fatElements
+const caloriesFatEl = document.getElementById("fatCalories");
+const percentFatEl = document.getElementById("percentfat");
+const macroFatEl = document.getElementById("fatMacro");
+
+//collect all % options
+let percentOption = document.querySelectorAll('select[name="percentChoice"]');
+percentOption.forEach((e) => {
+  e.addEventListener("change", () => {
+    validatePercentChoice();
+    presentCaloriesMacros();
+    presentMacros();
+  });
+});
+
+let calFat;
+let calProt;
+let calCarb;
+
+//Creates a dropdown-list for every macro with 5point jump
+// Create defualt values 40c/40p/20f
+function populateMacroDropdowns() {
+  //carbs
+  for (let i = 0; i <= 100; i += 5) {
+    let option = document.createElement("option");
+    option.text = i + "%";
+    option.value = i;
+    percentCarbsEl.appendChild(option);
+    if (i === 40) {
+      option.selected = true; // Set default value to 40%
+    }
+  }
+  //Protein
+  for (let i = 0; i <= 100; i += 5) {
+    let option = document.createElement("option");
+    option.text = i + "%";
+    option.value = i;
+    percentProteinEl.appendChild(option);
+
+    if (i === 40) {
+      option.selected = true; // Set default value to 40%
+    }
+  }
+  //Fat
+  for (let i = 0; i <= 100; i += 5) {
+    let option = document.createElement("option");
+    option.text = i + "%";
+    option.value = i;
+    percentFatEl.appendChild(option);
+
+    if (i === 20) {
+      option.selected = true; // Set default value to 20%
+    }
+  }
+}
+
+function presentCaloriesMacros() {
+  calCarb = energyIntake * (parseInt(percentCarbsEl.value) / 100).toFixed(1);
+  caloriesCarbEl.textContent = calCarb + " kcal";
+  calProt = energyIntake * (parseInt(percentProteinEl.value) / 100).toFixed(1);
+  caloriesProteinEl.textContent = calProt + " kcal";
+  calFat = energyIntake * (parseInt(percentFatEl.value) / 100).toFixed(1);
+  caloriesFatEl.textContent = calFat + " kcal";
+}
+
+function presentMacros() {
+  macroCarbEl.textContent = (calCarb / 4).toFixed(1) + " g";
+  macroProteinEl.textContent = (calProt / 4).toFixed(1) + " g";
+  macroFatEl.textContent = (calFat / 9).toFixed(1) + " g";
+}
+
+//validate that all % values is 100% or red text
+function validatePercentChoice() {
+  let sumOfPercent = 0;
+  let validateEl = document.querySelectorAll('select[name="percentChoice"]');
+  validateEl.forEach((e) => {
+    sumOfPercent += parseInt(e.value);
+  });
+
+  if (sumOfPercent < 100 || sumOfPercent > 100) {
+    validateEl.forEach((e) => {
+      e.style.color = "red";
+    });
+  } else {
+    validateEl.forEach((e) => {
+      e.style.color = "black";
+    });
+  }
+}
+
+//reset everything if user wana calculate again
+function resetButton() {
+  calacBtn.style.display = "block";
+  resetBtn.style.display = "none";
+
+  resultContainerEl.style.display = "none";
+  tableEl.style.display = "table";
+
+  measureChoiceSelect.selectedIndex = 0;
+  measureChoice = "";
+
+  genderEl.selectedIndex = 0;
+  gender = "";
+
+  activityEl.selectedIndex = 0;
+  activityLevel = 0;
+
+  goalEl.selectedIndex = 0;
+  weightGoal = "";
+
+  femaleEl.selectedIndex = 0;
+  pregnentInfo = "";
+
+  weightValueEl.selectedIndex = 0;
+  weightGoalValue;
+
+  weightChoice.selectedIndex = 0;
+
+  weightEl.value = "";
+  weight = "";
+
+  age = "";
+  ageEl.value = "";
+
+  height = "";
+  heightEl.value = "";
+
+  energyIntake = "";
+  presentEnergy.textContent = "";
+
+  weightAmount;
+  bmr = "";
+  bmi = "";
+
+  imgResult.src = "neutral-background.svg";
+}
+const mobileNavBtn = document.getElementById("mobileNavBtn");
+const mobileNav = document.getElementById("mobileNav");
+mobileNavBtn.addEventListener("click", () => {
+  mobileNav.style.display = "block";
+  mobileNavBtn.style.display = "none";
+});
+const closeMobileNav = document.getElementById("closeMobileNav");
+closeMobileNav.addEventListener("click", () => {
+  mobileNav.style.display = "none";
+  mobileNavBtn.style.display = "block";
+});

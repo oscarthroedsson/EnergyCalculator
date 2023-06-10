@@ -16,8 +16,18 @@
         src="neutral-background.svg"
         alt="style background"
       />
-      <nav>
-        <img src="" alt="" class="logo" />
+
+      <nav class="desktopNav">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Recipe</a></li>
+          <li><a href="#">Database</a></li>
+          <li><a href="#">Our vision</a></li>
+        </ul>
+      </nav>
+      <button class="mobileNavBtn" id="mobileNavBtn">MENU</button>
+      <nav class="mobileNav" id="mobileNav">
+        <p id="closeMobileNav">close</p>
         <ul>
           <li>Home</li>
           <li>Recipe</li>
@@ -25,48 +35,114 @@
           <li>Our vision</li>
         </ul>
       </nav>
+    </header>
 
-      <div class="contentHeader">
-        <span>
-          <h1>Unlock Your Potential - Discover Optimal Health!</h1>
-          <p>
-            Discover Optimal Health! Transform your well-being with our tools
-            and guidance. Discover your BMI and energy needs effortlessly. We're
-            your personal health coach, supporting your goals. Break free and
-            unleash your vibrant, energetic self. Experience the Health and
-            Fitness Hub today!
-          </p>
-        </span>
-        <section class="calculatorContainer">
-          <div class="inputBox">
-            <!-- Metric ska vara defualt -->
-            <div class="factorBox">
-              <label for=""
-                >Values:
-                <div class="inputValues">
-                  <select name="measureChoice" id="measureChoice">
-                    <option disabled selected value>Choose value</option>
-                    <option value="metric">Metric</option>
-                    <option value="imperial">Imperial</option>
-                  </select>
-                </div>
-              </label>
-            </div>
-            <!-- Gender  -->
-            <div class="factorBox">
-              <label for="gender"
-                >Gender:
-                <select name="gender" id="genders">
-                  <option disabled selected value>Choose gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </label>
-            </div>
-            <!-- pregnet -->
-            <div class="infoBox" id="msgFemale">
-              <label for="supplementaryFemaleInfo">
-                <p>Choste state if you have new born or is pregnant</p>
+    <div class="contentHeader">
+      <div class="intro">
+        <h1>Unlock Your Potential - Discover Optimal Health!</h1>
+        <p>
+          Discover Optimal Health! Transform your well-being with our tools and
+          guidance. Discover your BMI and energy needs effortlessly. We're your
+          personal health coach, supporting your goals. Break free and unleash
+          your vibrant, energetic self. Experience the Health and Fitness Hub
+          today!
+        </p>
+      </div>
+
+      <section class="calculatorContainer">
+        <!-- RESULT CONTAINER -->
+        <div id="resultContainer" class="resultContainer">
+          <table class="resultTable">
+            <tr>
+              <th>
+                <h3>YOUR RESULTS</h3>
+              </th>
+            </tr>
+            <tr>
+              <td>Daily energyneed:</td>
+              <td id="energyNeed"></td>
+            </tr>
+            <!-- CARB DATA -->
+            <tr>
+              <td id="carbs-el">Carbs:</td>
+              <td id="carbCalories"></td>
+              <td id="carbMacro"></td>
+              <td>
+                <select name="percentChoice" id="percentCarbs"></select>
+              </td>
+            </tr>
+            <!-- PROTEIN DATA -->
+            <tr>
+              <td id="protein-el">Protein:</td>
+              <td id="proteinCalories"></td>
+              <td id="proteinMacro"></td>
+              <td>
+                <select name="percentChoice" id="percentProtein"></select>
+              </td>
+            </tr>
+            <!-- FAT DATA -->
+            <tr>
+              <td id="fat-el">Fat:</td>
+              <td id="fatCalories"></td>
+              <td id="fatMacro"></td>
+              <td>
+                <select name="percentChoice" id="percentfat"></select>
+              </td>
+            </tr>
+            <tr id="rowBmi">
+              <td>Your BMI:</td>
+              <td id="bmiValue"></td>
+              <td id="bmiMsg">27 Servere obisity</td>
+            </tr>
+            <!-- <p>
+                Improving your health can feel overwhelming, but remember that
+                every small step you take towards a healthier lifestyle is
+                progress. Don't be discouraged by setbacks, but instead focus on
+                the positive changes you are making. You are capable of achieving
+                your goals and taking control of your health. Keep in mind that a
+                healthy lifestyle is not a quick fix, but a lifelong journey.
+                Celebrate your successes, no matter how small, and know that each
+                healthy choice you make brings you closer to your goals. With
+                dedication and perseverance, you can achieve a healthier and
+                happier you.
+              </p> -->
+          </table>
+        </div>
+
+        <!-- INPUT TABLE -->
+
+        <table class="inputTable" id="table-El">
+          <tr>
+            <td><label for="measureChoice">Values:</label></td>
+            <td>
+              <select name="measureChoice" id="measureChoice">
+                <option disabled selected value>Choose value</option>
+                <option value="metric">Metric</option>
+                <option value="imperial">Imperial</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="genders">Gender:</label></td>
+            <td>
+              <select name="gender" id="genders">
+                <option disabled selected value>Choose gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="info">
+            <td>
+              <div class="infoBox" id="msgFemale">
+                <label for="supplementaryFemaleInfo"
+                  >Choste state if you have new born or is pregnant</label
+                >
+              </div>
+            </td>
+            <td>
+              <div class="infoBox" id="msgFemaleSelect">
                 <select
                   name="supplementaryFemaleInfo"
                   id="supplementaryFemaleInfo"
@@ -78,177 +154,135 @@
                   <option value="330">Breastfiding 0-6 months</option>
                   <option value="400">Breastfiding 7-12 months</option>
                 </select>
-              </label>
-            </div>
+              </div>
+            </td>
+          </tr>
 
-            <!-- height -->
-            <div class="factorBox">
-              <label for=""
-                >Height:
-                <div class="inputValues">
-                  <input
-                    type="number"
-                    name="heightElement"
-                    id="heightElement"
-                    min="100"
-                  />
-                  <p class="factor" id="factorHeight">--</p>
-                </div>
-              </label>
-            </div>
+          <tr>
+            <td><label for="heightElement">Height</label></td>
+            <td>
+              <input
+                type="number"
+                name="heightElement"
+                id="heightElement"
+                min="100"
+              />
+              <p class="factor" id="factorHeight">--</p>
+            </td>
+          </tr>
 
-            <div class="infoBox" id="msgHeight">
-              <p>
+          <tr class="info">
+            <td colspan="5">
+              <div class="infoBox" id="msgHeight">
                 haha, chill. World record for tallest person is 273cm(8ft
                 11inch).
-              </p>
-            </div>
+              </div>
+            </td>
+          </tr>
 
-            <!-- weight -->
-            <div class="factorBox">
-              <label for=""
-                >Weight:
-                <div class="inputValues">
-                  <input
-                    type="number"
-                    name="weightElement"
-                    id="weightElement"
-                  />
-                  <p class="factor" id="factorWeight">--</p>
-                </div>
-              </label>
-            </div>
+          <tr>
+            <td><label for="weightElement">Weight</label></td>
+            <td>
+              <input type="number" name="weightElement" id="weightElement" />
+              <p class="factor" id="factorWeight">--</p>
+            </td>
+          </tr>
 
-            <!-- age -->
-            <div class="factorBox">
-              <label for=""
-                >Age:
-                <div class="inputValues">
-                  <input
-                    type="number"
-                    name="ageElement"
-                    id="ageElement"
-                    minlength="16"
-                  />
-                  <p class="factor" id="factorAge">--</p>
-                </div>
-              </label>
-            </div>
+          <tr>
+            <td><label for="ageElement">Age:</label></td>
+            <td>
+              <input
+                type="number"
+                name="ageElement"
+                id="ageElement"
+                minlength="16"
+              />
+              <p class="factor" id="factorAge">--</p>
+            </td>
+          </tr>
 
-            <div class="infoBox" id="msgAge">
-              <p>Sorry, we don´t provide our services to people under 16.</p>
-            </div>
-            <!-- Physical activity level -->
-            <div class="factorBox">
-              <label for="physicalActivity"
-                >Physical Activity
-                <select name="activityElement" id="activityElement">
-                  <option disabled selected value>
-                    Choose your activity level
-                  </option>
-                  <option value="1.2">
-                    Little to no exercise with sedentary job
-                  </option>
-                  <option value="1.375">
-                    Light exercise per week (1-3 sessions/week) with sedentary
-                    job
-                  </option>
-                  <option value="1.55">
-                    Moderate exercise per week(4-5 sessions/week) with active
-                    job
-                  </option>
-                  <option value="1.725">
-                    Daily exercise or intense exercise (3-4 sessions/week)
-                  </option>
-                  <option value="1.9">
-                    Intense exersice daily with active job
-                  </option>
-                </select>
-              </label>
-            </div>
-            <!-- Weight goal -->
-            <div class="factorBox">
-              <label for=""
-                >Goal
-                <select name="goalElement" id="goalElement">
-                  <option disabled selected value>Choose your goal</option>
-                  <option value="weightloss">Weightloss</option>
-                  <option value="weightgain">Weightgain</option>
-                  <option value="maintain">Maintain</option>
-                </select>
-              </label>
-            </div>
-            <!-- Give user able to choose tempo -->
-            <!-- JS NOT DONE -->
-            <div class="infoBox" id="msgWeightGoal">
-              <label for="specificWeightGoalInfo">
-                <p>Chose prefered weekly result</p>
+          <tr class="info">
+            <td colspan="5">
+              <div class="infoBox" id="msgAge">
+                Sorry, we don´t provide our services to people under 16.
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="activityElement">Physical Activity</label></td>
+            <td>
+              <select
+                class="activityElement"
+                name="activityElement"
+                id="activityElement"
+              >
+                <option disabled selected value>
+                  Choose your activity level
+                </option>
+                <option value="1.2">
+                  Little to no exercise with sedentary job
+                </option>
+                <option value="1.375">
+                  Light fitness, 1-3 sessions/week, with sedentary job
+                </option>
+                <option value="1.55">
+                  Moderate fitness, 4-5 sessions/week, with active job
+                </option>
+                <option value="1.725">
+                  Daily fitness or intense work (3-4 sessions/week)
+                </option>
+                <option value="1.9">
+                  Intense fitness daily with active job
+                </option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="goalElement">Goal:</label></td>
+            <td>
+              <select name="goalElement" id="goalElement">
+                <option selected disabled value>Choose your goal</option>
+                <option value="weightloss">Weightloss</option>
+                <option value="weightgain">Weightgain</option>
+                <option value="maintain">Maintain</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr class="info">
+            <td>
+              <div class="infoBox" id="msgWeightGoal">
+                <label for="specificWeightGoalInfo"
+                  >Chose prefered weekly result</label
+                >
+              </div>
+            </td>
+            <td>
+              <div class="infoBox" id="msgWeightGoalSelect">
                 <select
                   name="specificWeightGoalInfo"
                   id="specificWeightGoalInfo"
                 >
-                  <option value="0">Choose amount</option>
-                  <option value="0">Amount</option>
+                  <option selected disabled hidden>Choose amount</option>
                   <option value="500" id="goalValue1"></option>
                   <option value="1000" id="goalValue2"></option>
                 </select>
-              </label>
-            </div>
-          </div>
-          <button onclick="btnClicked()">GENERATE RESULT</button>
-        </section>
-      </div>
-    </header>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <button id="calcBtn" class="calcBtn" onclick="calcBtn()">
+          GENERATE RESULT
+        </button>
+        <button id="resetBtn" class="reset" onclick="resetButton()">
+          COUNT AGAIN
+        </button>
+      </section>
+    </div>
 
     <!-- BUTTON GENEREATE RESULT -->
-
-    <!-- RESULT CONTAINER -->
-    <div class="resultContainer">
-      <h3>YOUR RESULTS</h3>
-      <div class="wrapperResultInfo">
-        <div class="wrapperPresentEnergy">
-          <div class="presentEnergyResult">
-            <p id="carbs">1000 kcal</p>
-            <p id="protein">1000 kcal</p>
-            <p id="fat">1000 kcal</p>
-            <p id="energyNeed">1000 kcal</p>
-          </div>
-          <div class="categorysEnergyResult">
-            <p>Carbohydrates</p>
-            <p>Protein</p>
-            <p>Fat</p>
-            <p>kcal/day</p>
-          </div>
-        </div>
-        <!-- klar -->
-        <div class="contentResultWrapper">
-          <div class="bmiResult">
-            <p class="bmiNumber" id="bmiNumber">27</p>
-            <div class="bmicontainer">
-              <p>BMI</p>
-              <div class="bmiFactorText" id="bmiFactorText">obese</div>
-            </div>
-          </div>
-          <div class="resultaGraphLine">
-            <div class="marker"></div>
-            <div id="bmi-line" aria-valuemin="16" aria-valuemax="50"></div>
-          </div>
-        </div>
-        <div class="infoTextResultContainer">
-          <p>
-            Improving your health can feel overwhelming, but remember that every
-            small step you take towards a healthier lifestyle is progress. Don't
-            be discouraged by setbacks, but instead focus on the positive
-            changes you are making. You are capable of achieving your goals and
-            taking control of your health. Keep in mind that a healthy lifestyle
-            is not a quick fix, but a lifelong journey. Celebrate your
-            successes, no matter how small, and know that each healthy choice
-            you make brings you closer to your goals. With dedication and
-            perseverance, you can achieve a healthier and happier you.
-          </p>
-        </div>
-      </div>
-    </div>
 
     <script src="index.js"></script>
   </body>
